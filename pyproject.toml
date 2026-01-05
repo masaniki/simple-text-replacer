@@ -1,25 +1,15 @@
-# 変数の詳細は<>の中に記述する。
 [build-system]
 requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = <
-    @Summ: pypi上でのproject名,
-    @Type: String
-  >
+name = "simple-text-replacer"
 version = "0.1.0"
 authors = [
   { name="masaniki", email="masaniki.software@gmail.com },
 ]
-description = <
-    @Summ: projectの詳細を記述する。,
-    @Type: String
-  >
-dependencies = <
-    @Summ: packageの依存性を記述する,
-    @Type: pypi上のproject名(str型)のList
-  >
+description = "simple text replacing CLI application."
+dependencies = ["PyYAML]
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = <
@@ -27,28 +17,17 @@ classifiers = <
     @Type:Enum型List,
     @Disc:"https://pypi.org/classifiers/"
   >
-license = <
-    @Summ: license名,
-    @Type: Enum
-  >
-license-files = <
-    @Summ: project rootからlicense fileへの相対path,
-    @Type: Stirng型List
-  >
+license = "MIT"
+license-files = ["LICENSE.txt"]
 keywords = <
     @Summ: PyPI上の検索に引っかかるためのkeyword.
     @Type: String型Lsit
   >
 
 [project.scripts]
-<@Summ: cli applicationのcommand名, @Type:String> = "<srcからの相対path>:<cliによって実行する関数名>"
+text-replace = "main:mainCLI"
 
 [project.urls]
-Homepage = <
-    @Summ: projectのhomepage,
-    @Type: URL,
-    @Feat: 主に個人のhomepage
-  >
 Repository = <
     @Summ: source codeの公開場所,
     @Type: URL
