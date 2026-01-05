@@ -1,0 +1,573 @@
+QApplication:
+  "@Summ": GUI application全体を扱うclasss.
+  "@InsFuncs":
+    exec:
+      "@Summ": GUI applicationを実行する関数。
+QWidget:
+  "@Summ": 描画されるwidgetの基底class。
+  "@Desc":
+  - 全てのwidgetは長方形でZ順序で描画される。
+  "@InsVars":
+    acceptDrops:
+      "@Summ": dropを受けるか否か。
+      "@Type": Bool
+    cursor:
+      "@Summ": cursorのstyle。
+      "@Type": Qt.QCursor
+    enable:
+      "@Summ": widgetが有効か否か。
+      "@Type": Bool
+    font:
+      "@Summ": widgetに設定するfontを格納する。
+      "@Font": QFont
+    modal:
+      "@Summ": modal要素にする。
+      "@Type": Bool
+      "@Default": false
+    pos:
+      "@Summ": 親要素の左上を原点とした相対座標。
+      "@Type": QPoint
+    geometry:
+      "@Summ": widgetが占有する長方形領域を指定する。
+      "@Type": QRect
+      "@Desc": 親要素が無い時は画面全体を親要素にする。
+    size:
+      "@Summ": widgetの(幅,高さ)を指定する。
+      "@Type": QSize
+      "@Setter": false
+    maximumSize:
+      "@Summ": widgetの最大の(幅,高さ)を指定する。
+      "@Type": QSize
+    minimumSize:
+      "@Summ": widgetの最小の(幅,高さ)を指定する。
+      "@Type": QSize
+    syleSheet:
+      "@Summ": 文字装飾を指定する。
+      "@Type": String
+    visible:
+      "@Summ": widgetが表示されるか否か。
+      "@Type": Bool
+    windowTitle:
+      "@Summ": windowの名前。
+      "@Type": Stirng
+  "@ClsFuncs":
+    __init__:
+      "@Summ": constructor.
+      "@Desc": 引数無しだとwindowを生成する。
+  "@InsFuncs":
+    show:
+      "@Summ": 子孫widgetを表示する関数。
+    setLayout:
+      "@Summ": layoutを設定する関数。
+    resize:
+      "@Summ": sizeのsetter.
+      "@Args":
+        size:
+          "@Summ": 新しいsize。
+          "@Type": QSize
+    update:
+      "@Summ": 描画し直す関数。
+      "@Desc":
+      - 内部でpaintEventを実行する。
+      - widgetのsize変更の際にも呼び出される。
+  "@Signals":
+    mousePressEvent:
+      "@Summ": mouse buttonを押下した時に起動する関数。これは仮想関数。
+      "@Args":
+        event:
+          "@Type": QtGui.MouseEvent
+    mouseReleaseEvent:
+      "@Summ": mouse buttonを離した時に起動する関数。これは仮想関数。
+      "@Args":
+        event:
+          "@Type": QtGui.MouseEvent
+    paintEvent:
+      "@Summ": widgetを描画する時に起動する関数。仮想関数。
+      "@Args":
+        event:
+          "@Type": QtGui.QPaintEvent
+QLabel:
+  "@Summ": 文字列や画像を表示するclass.
+  "@InsVars":
+    alignment:
+      "@Summ": 文字列を揃える場所を指定する。
+      "@Type": Qt.Alignment型list。
+    indent:
+      "@Summ": indent
+      "@Type": Int
+    text:
+      "@Summ": 表示する文字列。
+      "@type": String
+    pixmap:
+      "@Summ": 表示する画像。
+      "@type": Qpixmap
+    wordWrap:
+      "@Summ": 文字列を折り返すか否か。
+      "@Type": Bool
+  "@ClsFuncs":
+    __init__:
+      "@Args":
+        message:
+          "@Type": String
+          "@Summ": 表示する文字列。
+  "@Slot":
+    setText:
+      "@Summ": 文字列のsetter。
+      "@Args":
+        text:
+          "@Type": String
+QLineEdit:
+  "@Summ": 1行の文字列を入力するための要素。
+  "@InsVars":
+    text:
+      "@Summ": 現在の文字列。
+      "@Type": String
+    placeholderText:
+      "@Summ": 空文字の時に表示される文字列。
+      "@Type": String
+  "@Slots":
+    clear:
+      "@Summ": 文字列を空にする関数。
+    setText:
+      "@Summ": 文字列のsetter.
+      "@Args":
+        text:
+          "@Type": String
+  "@Signals":
+    textChanged:
+      "@Summ": 文字列が変更された際にいつでも発信されるsignal.
+      "@Desc": setText()の時も起動する。
+      "@Type": String
+    textEdited:
+      "@Summ": user入力によって文字列が変更された時に発信するsingal.
+      "@Type": String
+    returnPressed:
+      "@Summ": enter keyが押された時に発信されるsingal.
+QPlainTextEdit:
+  "@Summ": plain textの入力要素。
+QTextEdit:
+  "@Summ": rich plain textの入力要素。
+QMainWindow:
+  "@Summ": main window用のclass.
+  "@Desc": 最上部にmenu bar、最下部にstatus barという典型的なGUI applicationを作るためのclass.
+  "@InsFuncs":
+    setStatusBar:
+      "@Summ": status barを追加する関数。
+      "@Args":
+        statusbar:
+          "@Type": QStatusBar
+QStatusBar:
+  "@Summ": window最下部に配置される情報表示のためのwidget.
+QMenuBar:
+  "@Summ": window最上部に配置される水平なmenu button用のclass.
+  "@Desc": pop upを消すまでuser入力を受け付けない。
+  "@Parent": QWidget
+  "@InsVars":
+    addMenu:
+      "@Args":
+        title:
+          "@Summ": menuのタイトル。
+          "@Type": String
+    exec:
+      "@Summ": pop upを実行する関数。
+QToolBar:
+  "@Summ": 水平なbutton group用のclass
+QMenuBar:
+QComboBox:
+  "@Summ": drop down listを作成するためのclass.
+  "@InsFuncs":
+    clear:
+      "@Summ": 全ての選択肢を削除する関数。
+    addItem:
+      "@Summ": 1つの選択肢を追加する関数。
+      "@Args":
+        text:
+          "@Summ": 選択肢の文字列。
+          "@Type": String
+    addItems:
+      "@Summ": 複数の選択肢を追加する関数。
+      "@Args":
+        texts:
+          "@Summ": 選択肢の文字列。
+          "@Type": String型List
+    removeItem:
+      "@Summ": 選択肢を削除する関数。
+      "@Args":
+        index:
+          "@Type": Int
+    currentIndex:
+      "@Summ": 要素番号のgetter。
+      "@Returns":
+        "@Type": Int
+    setCurrentIndex:
+      "@Summ": 要素番号のsetter。
+      "@Args":
+        index:
+          "@Type": Int
+    currentIndex:
+      "@Summ": 要素番号のgetter。
+      "@Returns":
+        "@Type": Int
+    setCurrentIndex:
+      "@Summ": 要素番号のsetter。
+      "@Args":
+        index:
+          "@Type": Int
+    count:
+      "@Summ": 選択肢の数のgetter.
+      "@Returns":
+        "@Type": Int
+QAbstractButton:
+  "@Summ": buttonの基底class.
+  "@InsVars":
+    checked:
+      "@Summ": buttonがcheckされているか否か。
+      "@Type": Bool
+    checkable:
+      "@Summ": check可能か否か。
+      "@Type": Bool
+    icon:
+      "@Summ": buttonのicon.
+      "@Type": QIcon
+    text:
+      "@Summ": buttonのlabel.
+      "@Type": String
+  "@InsFuncs":
+    group:
+      "@Summ": 親となるbutton groupのgetter.
+      "@Returns":
+        "@Type": QButtonGroup
+  "@Slots":
+    click:
+      "@Summ": clickする時に起動するslot.
+    setChecked:
+      "@Summ": checkのsetter.
+      "@Args":
+        arg01:
+          "@Type": Bool
+    toggle:
+      "@Summ": checkを反転する関数。
+  "@Signals":
+    clicked:
+      "@Summ": clickされた時に起動するsignal.
+    pressed:
+      "@Summ": 押下された時に起動するsignal.
+    released:
+      "@Summ": 解放された時に起動するsignal.
+    toggled:
+      "@Summ": toggleされた時に起動するsignal.
+QPushButton:
+  "@Summ": push buttonのwidget.
+  "@Parent": QAbstractButton
+QCheckBox:
+  "@Summ": checkboxのclass.
+  "@Parent": QAbstractButton
+QRadioButton:
+  "@Summ": radio buttonのclass.
+  "@Parent": QAbstractButton
+QToolButton:
+  "@Summ": tool bar上のbuttonのclass.
+  "@Parent": QAbstractButton
+QButtonGroup:
+  "@Summ": button groupを扱うclass.
+  "@Desc":
+  - 論理的なclassなので描画には影響しない。
+  - 排他的なbuttonの設計用だと考えてよい。
+  "@Parent": QObject
+  "@InsVars":
+    exclusive:
+      "@Summ": 排他的button gruopの時にtrue.
+      "@Type": Bool
+      "@Default": true
+  "@InsFuncs":
+    addButton:
+      "@Summ": buttonを追加する関数。
+      "@Args":
+        button:
+          "@Type": QAbstractButton
+        id:
+          "@Summ": buttonの識別子。
+          "@Desc":
+          - 負の数を指定すると自動的に番号が振られる。
+          - 番号を振る時は、「新しいid=最小値-1」である。
+          - -1はdefualt引数用であり、自動生成されることは無い。
+          "@Type": Int
+          "@Default": -1
+    removeButton:
+      "@Summ": buttonを削除する関数。
+      "@Args":
+        button:
+          "@Type": QAbstractButton
+    button:
+      "@Summ": 子要素のbuttonを得る関数。
+      "@Args":
+        id:
+          "@Summ": buttonの識別子。
+          "@Type": Int
+      "@Returns":
+        "@Type": QAbstractButton
+    buttons:
+      "@Summ": 子要素のbuttonのlistを得る関数。
+      "@Returns":
+        "@Type": QAbstractButton型list
+    id:
+      "@Summ": buttonのidを得る関数。
+      "@Args":
+        button:
+          "@Type": QAbstractButton
+QAbstractSlider:
+  "@Summ": sliderの基底class.
+  "@InsVars":
+    orientation:
+      "@Summ": sliderの向き。
+      "@Type": Qt.Orientation
+    minimum:
+      "@Summ": sliderの最小値。
+      "@Type": Int
+    value:
+      "@Summ": sliderの現在の値。
+      "@Type": Int
+    maximum:
+      "@Summ": sliderの最大値。
+      "@Type": Int
+    singleStep:
+      "@Summ": sliderの分解能。
+      "@Desc": 右key入力時にも動く。
+      "@Type": Int
+  "@Slots":
+    setValue:
+      "@Summ": valueのsetter. 
+      "@Args":
+        arg01:
+          "@Type": Int
+  "@Signals":
+    valueChanged:
+      "@Summ": 値が変更した時に発生するsingalを返す関数。
+      "@Type": Int型Signal
+QSlider:
+  "@Summ": sliderのclsss.
+  "@Parent": QAbstractSlider
+QProgressbar:
+  "@Summ": progress barのclsss.
+  "@Parent": QAbstractSlider
+QScrollBar:
+  "@Summ": scroll barのclsss.
+  "@Parent": QAbstractSlider
+QAbstractItemView:
+  "@Summ": AbstractItemModelに対応するViewの基底class.
+  "@InsFuncs":
+    setModel:
+      "@Summ": modelをsetする関数。
+      "@Args":
+        model:
+          "@Type": QAbstractItemModel
+QModelIndex:
+  "@Summ": viewの子要素を扱うclass.
+  "@Parent": QAbstractItemModel
+QListView:
+  "@Summ": listのviewerのclass.
+QListView:
+  "@Summ": 表のviewerのclass.
+QTreeView:
+  "@Summ": 木構造のviewerのclass.
+  "@Parent": QAbstractItemView
+  "@InsVars":
+    indentation:
+      "@Summ": treeを開いた時に発生するindentの幅を指定する。単位[px]。
+      "@Type": Int
+      "@Default": 30
+    header:
+      "@Summ": 木のviewのheader。
+      "@Type": QHeaderView
+QDialog:
+  "@Summ": dialog windowを扱うclass
+  "@Parent": QObject
+  "@Class":
+    DialogCode:
+      "@Summ": dialog windowを閉じる時に出力されるObject。
+      "@Parent": Enum
+  "@InsVars":
+    modal:
+      "@Summ": modal windowか否か。
+      "@Type": Bool
+    exec:
+      "@Summ": modal windowを同期的に表示する。
+      "@Returns":
+        "@Summ": dialogが正常に閉じされたか否か。
+        "@Type": DialogCode
+    open:
+      "@Summ": modal windowを非同期的に表示する。
+      "@Returns":
+        "@Summ": dialogが正常に閉じされたか否か。
+        "@Type": DialogCode
+    show:
+      "@Summ": modeless diaglogを表示する。
+    accept:
+      "@Summ": modalを閉じる時に
+  "@Signals":
+    accepted:
+      "@Summ": accept()が実行された時に発生するsignal.
+    rejected:
+      "@Summ": reject()が実行された時に発生するsignal.
+    finished:
+      "@Summ": accept()やreject()が実行された時に発生するsignal.
+QMessageBox:
+  "@Summ": 文字列のmodal windowのtemplate。
+  "@Parent": QDialog
+  "@Class":
+    Icon:
+     "@Summ": message box上のicon template。
+     "@Type":
+       "@Emun":
+         NoIcon:
+           "@Summ": icon無し。
+         Question:
+           "@Summ": 青丸に「?」icon。
+         Information:
+           "@Summ": 青丸に「i」icon。
+         Warning:
+           "@Summ": 黄色三角に「!」icon。
+         Critical:
+           "@Summ": 赤丸に「×」icon。
+    StandartButton:
+     "@Summ": message box上のbutton template.。
+     "@Parent": Enum
+  "@ClsFuncs":
+    question:
+      "@Summ": 質問用のmodal windowを表示する。
+      "@Args":
+        parent:
+          "@Type": QWidget
+        title:
+          "@Summ": modal windowのtitle.
+          "@Type": String
+        text:
+          "@Summ": modal windowに表示する文字列。
+          "@Type": String
+      "@Returns":
+        "@Type": QMessage.StandardButton
+    information:
+      "@Summ": 通知用のmodal windowを表示する。
+      "@Args":
+        parent:
+          "@Type": QWidget
+        title:
+          "@Summ": modal windowのtitle.
+          "@Type": String
+        text:
+          "@Summ": modal windowに表示する文字列。
+          "@Type": String
+      "@Returns":
+        "@Type": QMessage.StandardButton
+    warning:
+      "@Summ": 注意用のmodal windowを表示する。
+      "@Args":
+        parent:
+          "@Type": QWidget
+        title:
+          "@Summ": modal windowのtitle.
+          "@Type": String
+        text:
+          "@Summ": modal windowに表示する文字列。
+          "@Type": String
+      "@Returns":
+        "@Type": QMessage.StandardButton
+    critical:
+      "@Summ": 禁止用のmodal windowを表示する。
+      "@Args":
+        parent:
+          "@Type": QWidget
+        title:
+          "@Summ": modal windowのtitle.
+          "@Type": String
+        text:
+          "@Summ": modal windowに表示する文字列。
+          "@Type": String
+      "@Returns":
+        "@Type": QMessage.StandardButton
+  "@InsVars":
+    text:
+      "@Summ": pop upに表示する文字列。
+      "@Type": Stirng
+QFileDialog:
+  "@Summ": file選択用のmodal windowのclass.
+  "@Parent": QDialog
+  "@ClsFuncs":
+    getOpenFileName:
+      "@Summ": 1つのfileを選択するためのmodal window.
+      "@Args":
+        parent:
+          "@Summ": このwindowの親要素。
+          "@Type": QWidget
+        caption:
+          "@Summ": modal windowの名前。
+          "@Type": String
+          "@Default": ""
+        dir:
+          "@Summ": 最初に訪れるdirectory名。
+          "@Desc":
+          - file名を指定すると親directoryを表示する∧file名が既に入力された状態になる。
+          - 空文字の時はapplicationが実行されたdirectoryが入る。
+          "@Type": String
+          "@Default": ""
+        filter:
+          "@Summ": 拡張子を指定するための文字列。
+          "@Desc":
+          - "「文字列 (拡張子)」という形式で記述する。"
+          - ()の中に拡張子。
+          - 拡張子は半角空白で区切る。
+          - "「;;」で項目を区切る。"
+          "@Type": String
+          "@Default": ""
+      "@Returns":
+        "@Summ":
+        "@Desc": 中断すると空文字列が出力される。
+        "@Type":
+          - fileName:
+            "@Summ": 選択されたfileの絶対path。
+            "@Type": String
+          - selectedFilter:
+            "@Summ": 選択されたfilter。
+            "@Type": String
+    getOpenFileNames:
+      "@Summ": 複数のfileを選択するためのmodal window.
+    getOpenFileUrl:
+      "@Summ": 1つのURLを選択するためのmodal window.
+    getOpenFileUrls:
+      "@Summ": 複数のURLを選択するためのmodal window.
+    getSaveFileName:
+      "@Summ": fileを保存するためのmodal windowを表示する。
+      "@Args":
+        parent:
+          "@Summ": このwindowの親要素。
+          "@Type": QWidget
+        caption:
+          "@Summ": modal windowの名前。
+          "@Type": String
+          "@Default": ""
+        dir:
+          "@Summ": 最初に訪れるdirectory名。
+          "@Desc":
+          - file名を指定すると親directoryを表示する∧file名が既に入力された状態になる。
+          - 空文字の時はapplicationが実行されたdirectoryが入る。
+          "@Type": String
+          "@Default": ""
+        filter:
+          "@Summ": 拡張子を指定するための文字列。
+          "@Desc":
+          - "「文字列 (拡張子)」という形式で記述する。"
+          - "「;;」で項目を区切る。"
+          "@Type": String
+          "@Default": ""          
+      "@Returns":
+        "@Summ":
+        "@Desc": 中断すると空文字列が出力される。
+        "@Type":
+          - fileName:
+            "@Summ": 選択されたfileの絶対path。
+            "@Type": String
+          - selectedFilter:
+            "@Summ": 選択されたfilter。
+            "@Type": String
+
+          

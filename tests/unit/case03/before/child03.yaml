@@ -1,0 +1,88 @@
+QApplication:
+  "@Summary": GUI application全体を扱うclasss.
+  "@InsFuncs":
+    exec:
+      "@Summary": GUI applicationを実行する関数。
+QWidget:
+  "@Summary": 描画されるwidgetの基底class。
+  "@Description":
+  - 全てのwidgetは長方形でZ順序で描画される。
+  "@InsVars":
+    acceptDrops:
+      "@Summary": dropを受けるか否か。
+      "@Type": Bool
+    cursor:
+      "@Summary": cursorのstyle。
+      "@Type": Qt.QCursor
+    enable:
+      "@Summary": widgetが有効か否か。
+      "@Type": Bool
+    font:
+      "@Summary": widgetに設定するfontを格納する。
+      "@Font": QFont
+    modal:
+      "@Summary": modal要素にする。
+      "@Type": Bool
+      "@Default": false
+    pos:
+      "@Summary": 親要素の左上を原点とした相対座標。
+      "@Type": QPoint
+    geometry:
+      "@Summary": widgetが占有する長方形領域を指定する。
+      "@Type": QRect
+      "@Description": 親要素が無い時は画面全体を親要素にする。
+    size:
+      "@Summary": widgetの(幅,高さ)を指定する。
+      "@Type": QSize
+      "@Setter": false
+    maximumSize:
+      "@Summary": widgetの最大の(幅,高さ)を指定する。
+      "@Type": QSize
+    minimumSize:
+      "@Summary": widgetの最小の(幅,高さ)を指定する。
+      "@Type": QSize
+    syleSheet:
+      "@Summary": 文字装飾を指定する。
+      "@Type": String
+    visible:
+      "@Summary": widgetが表示されるか否か。
+      "@Type": Bool
+    windowTitle:
+      "@Summary": windowの名前。
+      "@Type": Stirng
+  "@ClsFuncs":
+    __init__:
+      "@Summary": constructor.
+      "@Description": 引数無しだとwindowを生成する。
+  "@InsFuncs":
+    show:
+      "@Summary": 子孫widgetを表示する関数。
+    setLayout:
+      "@Summary": layoutを設定する関数。
+    resize:
+      "@Summary": sizeのsetter.
+      "@Arguments":
+        size:
+          "@Summary": 新しいsize。
+          "@Type": QSize
+    update:
+      "@Summary": 描画し直す関数。
+      "@Description":
+      - 内部でpaintEventを実行する。
+      - widgetのsize変更の際にも呼び出される。
+  "@Signals":
+    mousePressEvent:
+      "@Summary": mouse buttonを押下した時に起動する関数。これは仮想関数。
+      "@Arguments":
+        event:
+          "@Type": QtGui.MouseEvent
+    mouseReleaseEvent:
+      "@Summary": mouse buttonを離した時に起動する関数。これは仮想関数。
+      "@Arguments":
+        event:
+          "@Type": QtGui.MouseEvent
+    paintEvent:
+      "@Summary": widgetを描画する時に起動する関数。仮想関数。
+      "@Arguments":
+        event:
+          "@Type": QtGui.QPaintEvent

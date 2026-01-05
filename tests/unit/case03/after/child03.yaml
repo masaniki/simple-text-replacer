@@ -1,0 +1,88 @@
+QApplication:
+  "@SSS": GUI application全体を扱うclasss.
+  "@InsFuncs":
+    exec:
+      "@SSS": GUI applicationを実行する関数。
+QWidget:
+  "@SSS": 描画されるwidgetの基底class。
+  "@Description":
+  - 全てのwidgetは長方形でZ順序で描画される。
+  "@InsVars":
+    acceptDrops:
+      "@SSS": dropを受けるか否か。
+      "@TTT": Bool
+    cursor:
+      "@SSS": cursorのstyle。
+      "@TTT": Qt.QCursor
+    enable:
+      "@SSS": widgetが有効か否か。
+      "@TTT": Bool
+    font:
+      "@SSS": widgetに設定するfontを格納する。
+      "@Font": QFont
+    modal:
+      "@SSS": modal要素にする。
+      "@TTT": Bool
+      "@Default": false
+    pos:
+      "@SSS": 親要素の左上を原点とした相対座標。
+      "@TTT": QPoint
+    geometry:
+      "@SSS": widgetが占有する長方形領域を指定する。
+      "@TTT": QRect
+      "@Description": 親要素が無い時は画面全体を親要素にする。
+    size:
+      "@SSS": widgetの(幅,高さ)を指定する。
+      "@TTT": QSize
+      "@Setter": false
+    maximumSize:
+      "@SSS": widgetの最大の(幅,高さ)を指定する。
+      "@TTT": QSize
+    minimumSize:
+      "@SSS": widgetの最小の(幅,高さ)を指定する。
+      "@TTT": QSize
+    syleSheet:
+      "@SSS": 文字装飾を指定する。
+      "@TTT": String
+    visible:
+      "@SSS": widgetが表示されるか否か。
+      "@TTT": Bool
+    windowTitle:
+      "@SSS": windowの名前。
+      "@TTT": Stirng
+  "@ClsFuncs":
+    __init__:
+      "@SSS": constructor.
+      "@Description": 引数無しだとwindowを生成する。
+  "@InsFuncs":
+    show:
+      "@SSS": 子孫widgetを表示する関数。
+    setLayout:
+      "@SSS": layoutを設定する関数。
+    resize:
+      "@SSS": sizeのsetter.
+      "@Arguments":
+        size:
+          "@SSS": 新しいsize。
+          "@TTT": QSize
+    update:
+      "@SSS": 描画し直す関数。
+      "@Description":
+      - 内部でpaintEventを実行する。
+      - widgetのsize変更の際にも呼び出される。
+  "@Signals":
+    mousePressEvent:
+      "@SSS": mouse buttonを押下した時に起動する関数。これは仮想関数。
+      "@Arguments":
+        event:
+          "@TTT": QtGui.MouseEvent
+    mouseReleaseEvent:
+      "@SSS": mouse buttonを離した時に起動する関数。これは仮想関数。
+      "@Arguments":
+        event:
+          "@TTT": QtGui.MouseEvent
+    paintEvent:
+      "@SSS": widgetを描画する時に起動する関数。仮想関数。
+      "@Arguments":
+        event:
+          "@TTT": QtGui.QPaintEvent

@@ -1,0 +1,31 @@
+
+QLabel:
+  "@SSS": 文字列や画像を表示するclass.
+  "@InsVars":
+    alignment:
+      "@SSS": 文字列を揃える場所を指定する。
+      "@TTT": Qt.Alignment型list。
+    indent:
+      "@SSS": indent
+      "@TTT": Int
+    text:
+      "@SSS": 表示する文字列。
+      "@type": String
+    pixmap:
+      "@SSS": 表示する画像。
+      "@type": Qpixmap
+    wordWrap:
+      "@SSS": 文字列を折り返すか否か。
+      "@TTT": Bool
+  "@ClsFuncs":
+    __init__:
+      "@Arguments":
+        message:
+          "@TTT": String
+          "@SSS": 表示する文字列。
+  "@Slot":
+    setText:
+      "@SSS": 文字列のsetter。
+      "@Arguments":
+        text:
+          "@TTT": String

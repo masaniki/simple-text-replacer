@@ -18,6 +18,10 @@ def mainCLI():
     args=parser.parse_args()
     replacerPath=Path(args.replacer)
     textPath=Path(args.textFile)
+    if(args.new is None):
+        newPath=None
+    else:
+        newPath=Path(args.new)
     #replacerのfileを開く。
     if(replacerPath.suffix==".json"):
         with open(replacerPath,mode="r",encoding="utf-8") as f:
@@ -28,10 +32,10 @@ def mainCLI():
     else:
         raise ValueError(f'{args.replacer} should be JSON or YAML file.')
     # text fileを開く。
-    directoryDFS(textPath,replacerDict,args.new)
+    directoryDFS(replacerDict,textPath,newPath)
 
 
-def directoryDFS(startPath:Path,replacer:dict,newFile:str=None):
+def directoryDFS(replacer:dict,startPath:Path,newPath:str=None):
     """
     @Summ: directory構造を深さ優先探索する関数。
 
@@ -46,8 +50,8 @@ def directoryDFS(startPath:Path,replacer:dict,newFile:str=None):
         @Desc: {置換前の文字列(str):置換後の文字列(str)}
         @Type: dict
       newFile:
-        @Summ: 新規fileの名前。上書きの時はNoneにする。
-        @Type: str|None
+        @Summ: 新規fileまたは新規folder。上書きの時はNoneにする。
+        @Type: Path|None
     """
     if(startPath.is_file()):
         with open(startPath,mode="r",encoding="utf-8") as f:
@@ -55,15 +59,22 @@ def directoryDFS(startPath:Path,replacer:dict,newFile:str=None):
         for key in replacer.keys():
           value=replacer[key]
           text=text.replace(key,value)
-        if(newFile):
-            outputPath=newFile
+        if(newPath is not None):
+            outputPath=newPath
         else:
             outputPath=startPath
         with open(outputPath,mode="w",encoding="utf-8") as f:
             f.write(text)
     else:
+        if(newPath is not None):
+            if(not newPath.is_dir()):
+                newPath.mkdir()
         for childPath in startPath.iterdir():
-            directoryDFS(childPath,replacer)
+            if(newPath is None):
+                newChildPath=None
+            else:
+                newChildPath=newPath/childPath.name
+            directoryDFS(replacer,childPath,newChildPath)
 
 
 if(__name__=="__main__"):

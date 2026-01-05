@@ -1,0 +1,31 @@
+QLineEdit:
+  "@SSS": 1行の文字列を入力するための要素。
+  "@InsVars":
+    text:
+      "@SSS": 現在の文字列。
+      "@TTT": String
+    placeholderText:
+      "@SSS": 空文字の時に表示される文字列。
+      "@TTT": String
+  "@Slots":
+    clear:
+      "@SSS": 文字列を空にする関数。
+    setText:
+      "@SSS": 文字列のsetter.
+      "@Arguments":
+        text:
+          "@TTT": String
+  "@Signals":
+    textChanged:
+      "@SSS": 文字列が変更された際にいつでも発信されるsignal.
+      "@Description": setText()の時も起動する。
+      "@TTT": String
+    textEdited:
+      "@SSS": user入力によって文字列が変更された時に発信するsingal.
+      "@TTT": String
+    returnPressed:
+      "@SSS": enter keyが押された時に発信されるsingal.
+QPlainTextEdit:
+  "@SSS": plain textの入力要素。
+QTextEdit:
+  "@SSS": rich plain textの入力要素。
