@@ -8,24 +8,22 @@ version = "0.1.0"
 authors = [
   { name="masaniki", email="masaniki.software@gmail.com },
 ]
-description = "simple text replacing CLI application."
+description = "This provides text replacement by YAML or JSON format."
 dependencies = ["PyYAML]
 readme = "README.md"
 requires-python = ">=3.9"
-classifiers = <
-    @Summ:PyPIが定める分類名,
-    @Type:Enum型List,
-    @Disc:"https://pypi.org/classifiers/"
-  >
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Environment :: Console",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Text Processing"
+]
 license = "MIT"
 license-files = ["LICENSE.txt"]
-keywords = <
-    @Summ: PyPI上の検索に引っかかるためのkeyword.
-    @Type: String型Lsit
-  >
+keywords = ["text", "CLI"]
 
 [project.scripts]
-text-replace = "main:mainCLI"
+simrep = "main:mainCLI"
 
 [project.urls]
 Repository = <
