@@ -14,7 +14,7 @@ def mainCLI():
     parser.add_argument("-v","--version", action="version", version=f"simple-text-replacer {VERSION}")
     parser.add_argument("replacer", type=str, default=None, help="Put in YAML file or JSON file that contains replace information.")
     parser.add_argument("textFile", type=str, default=None, help="Put in text file name or directory name.")
-    parser.add_argument("-n","--new", default=None, help="Put in text file name or directory name.")
+    parser.add_argument("-n","--new", default=None, help="Ouput as an anther file or directory.")
     args=parser.parse_args()
     replacerPath=Path(args.replacer)
     textPath=Path(args.textFile)
