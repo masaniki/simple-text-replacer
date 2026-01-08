@@ -6,10 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "simple-text-replacer"
 version = "1.0.0"
 authors = [
-  { name="masaniki", email="masaniki.software@gmail.com },
+  { name="masaniki", email="masaniki.software@gmail.com" },
 ]
 description = "This provides text replacement by YAML or JSON format."
-dependencies = ["PyYAML]
+dependencies = ["PyYAML"]
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
