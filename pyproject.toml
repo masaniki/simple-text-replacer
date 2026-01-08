@@ -15,7 +15,7 @@ requires-python = ">=3.9"
 classifiers = [
   "Development Status :: 1 - Planning",
   "Environment :: Console",
-  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.9",
   "Topic :: Text Processing"
 ]
 license = "MIT"
