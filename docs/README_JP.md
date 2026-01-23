@@ -61,3 +61,9 @@ versionを表示する。
 `[-n|--new]　<new file or new directory>`
 
 置換後のテキストファイルを新規ファイルとして出力する。
+
+## 詳細仕様
+
+key-valueによる置換は上から順番に実行される。
+
+
