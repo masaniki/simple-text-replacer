@@ -1,2 +1,6 @@
 # 概要
-1つのtext fileをjsonで置換するtest.
+1つのdirectoryをyamlで置換するtest.
+
+# test command
+
+`simrep replacer.yaml before -n after`
