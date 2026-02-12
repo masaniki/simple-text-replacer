@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "simple-text-replacer"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="masaniki", email="masaniki.software@gmail.com" },
 ]
@@ -25,7 +25,7 @@ license-files = ["LICENSE.txt"]
 keywords = ["text", "CLI"]
 
 [project.scripts]
-simrep = "main:mainCLI"
+simrep = "simrep:main"
 
 [project.urls]
 Repository = "https://github.com/masaniki/simple-text-replacer"
