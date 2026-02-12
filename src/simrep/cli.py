@@ -6,12 +6,12 @@ import json
 
 VERSION="v0.1.0"
 
-def mainCLI():
+def main():
     """
     @Summ: CLIを処理する関数。
     """
-    parser=argparse.ArgumentParser(prog="PROG")
-    parser.add_argument("-v","--version", action="version", version=f"simple-text-replacer {VERSION}")
+    parser=argparse.ArgumentParser(prog="simple-text-replacer")
+    parser.add_argument("-v","--version", action="version", version="%(prog)s "+f"{VERSION}")
     parser.add_argument("replacer", type=str, default=None, help="Put in YAML file or JSON file that contains replace information.")
     parser.add_argument("textFile", type=str, default=None, help="Put in text file name or directory name.")
     parser.add_argument("-n","--new", default=None, help="Ouput as an anther file or directory.")
@@ -78,4 +78,4 @@ def directoryDFS(replacer:dict,startPath:Path,newPath:str=None):
 
 
 if(__name__=="__main__"):
-    mainCLI()
+    pass
